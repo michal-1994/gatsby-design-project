@@ -12,7 +12,7 @@ import {
 
 const HomePage = ({data}) => {
 
-  const {allAirtable: {nodes:projects}} = data;
+  const {allAirtable: {nodes:projects}, customers:{nodes} } = data;
 
   console.log(data);
 
@@ -21,6 +21,7 @@ const HomePage = ({data}) => {
       <Hero />
       <About />
       <Projects projects={projects} title="latest projects" />
+      <Slider customers={nodes} />
     </Layout>
   )
 }
@@ -41,6 +42,28 @@ export const query = graphql`
             localFiles {
               childImageSharp {
                 gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+              }
+            }
+          }
+        }
+        id
+      }
+    },
+    customers: allAirtable(filter: {table: {eq: "Customers"}}) {
+      nodes {
+        data {
+          name
+          quote
+          title
+          image {
+            localFiles {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: FIXED
+                  width: 150
+                  height: 150
+                  placeholder: DOMINANT_COLOR
+                )
               }
             }
           }
