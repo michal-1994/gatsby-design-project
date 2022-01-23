@@ -13,7 +13,9 @@ import {
 const HomePage = () => {
 
   return (
-    <h2>home page</h2>
+    <Layout>
+      <Hero />
+    </Layout>
   )
 }
 
