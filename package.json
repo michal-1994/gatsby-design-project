@@ -23,7 +23,7 @@
     "gatsby-plugin-react-helmet": "^4.3.0",
     "gatsby-plugin-sharp": "^3.3.1",
     "gatsby-plugin-styled-components": "^4.3.0",
-    "gatsby-source-airtable": "^2.1.1",
+    "gatsby-source-airtable": "^2.2.1",
     "gatsby-source-filesystem": "^3.3.0",
     "gatsby-transformer-sharp": "^3.3.0",
     "react": "^17.0.1",
