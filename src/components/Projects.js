@@ -5,19 +5,25 @@ import styled from 'styled-components'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import SearchButtons from './SearchButtons'
 
-const Projects = ({projects: data, title, page}) => {
-  const [projects, setProjects] = React.useState(data);
+const Projects = ({ projects: data, title, page }) => {
+  const [projects, setProjects] = React.useState(data)
 
-  // more logic here
+  const setBackToAll = () => {
+    setProjects(data);
+  }
 
   return (
     <Wrapper className="section">
       <Title title={title || 'projects'} />
-      {/* search buttons here */}
+      {page && <SearchButtons
+        projects={data}
+        setProjects={setProjects}
+        setBackToAll={setBackToAll}
+      />}
       <div className="section-center">
-        {projects.map((project) => {
-          const {id} = project;
-          const {name, type, image} = project.data;
+        {projects.map(project => {
+          const { id } = project
+          const { name, type, image } = project.data
           return (
             <article key={id}>
               <div className="container">
