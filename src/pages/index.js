@@ -14,8 +14,6 @@ const HomePage = ({data}) => {
 
   const {allAirtable: {nodes:projects}, customers:{nodes} } = data;
 
-  console.log(data);
-
   return (
     <Layout>
       <Hero />
@@ -74,6 +72,5 @@ export const query = graphql`
     }
   }
 `
-
 
 export default HomePage
