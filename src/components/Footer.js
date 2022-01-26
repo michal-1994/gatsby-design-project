@@ -17,6 +17,7 @@ const Wrapper = styled.footer`
   background: var(--clr-black);
   text-align: center;
   padding: 1rem;
+  margin-top: auto;
   p {
     color: var(--clr-white);
     margin-bottom: 0;

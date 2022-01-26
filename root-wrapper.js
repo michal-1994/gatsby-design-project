@@ -71,6 +71,11 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1.5;
         font-size: 0.875rem;
     }
+    main {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
     ul {
         list-style-type: none;
     }
