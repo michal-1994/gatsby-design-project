@@ -13,10 +13,12 @@ const NavLink = ({ page }) => {
         {links.map((link, index) => {
           const { url, label, icon } = link
           if (link.page === page) {
-            return <Link key={index} to={url}>
-              {icon}
-              {label}
-            </Link>
+            return (
+              <Link key={index} to={url}>
+                {icon}
+                {label}
+              </Link>
+            )
           }
         })}
         <div className="caret"></div>

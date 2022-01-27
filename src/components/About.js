@@ -7,7 +7,7 @@ const About = () => {
     <Wrapper className="section">
       <Title title="about us" />
       <div className="section-center">
-        {services.map(({id, icon, label, text}) => {
+        {services.map(({ id, icon, label, text }) => {
           return (
             <article key={id}>
               <span>{icon}</span>

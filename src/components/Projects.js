@@ -9,17 +9,19 @@ const Projects = ({ projects: data, title, page }) => {
   const [projects, setProjects] = React.useState(data)
 
   const setBackToAll = () => {
-    setProjects(data);
+    setProjects(data)
   }
 
   return (
     <Wrapper className="section">
       <Title title={title || 'projects'} />
-      {page && <SearchButtons
-        projects={data}
-        setProjects={setProjects}
-        setBackToAll={setBackToAll}
-      />}
+      {page && (
+        <SearchButtons
+          projects={data}
+          setProjects={setProjects}
+          setBackToAll={setBackToAll}
+        />
+      )}
       <div className="section-center">
         {projects.map(project => {
           const { id } = project

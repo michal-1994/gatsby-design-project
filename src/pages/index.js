@@ -1,18 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import {
-  Layout,
-  Hero,
-  About,
-  Projects,
-  Survey,
-  Slider,
-  GridProjects,
-} from '../components'
+import { Layout, Hero, About, Projects, Survey, Slider } from '../components'
 
-const HomePage = ({data}) => {
-
-  const {allAirtable: {nodes:projects}, customers:{nodes} } = data;
+const HomePage = ({ data }) => {
+  const {
+    allAirtable: { nodes: projects },
+    customers: { nodes },
+  } = data
 
   return (
     <Layout>
@@ -28,9 +22,9 @@ const HomePage = ({data}) => {
 export const query = graphql`
   {
     allAirtable(
-      filter: {table: {eq: "Projects"}}
+      filter: { table: { eq: "Projects" } }
       limit: 3
-      sort: {fields: data___date, order: DESC}
+      sort: { fields: data___date, order: DESC }
     ) {
       nodes {
         data {
@@ -47,8 +41,8 @@ export const query = graphql`
         }
         id
       }
-    },
-    customers: allAirtable(filter: {table: {eq: "Customers"}}) {
+    }
+    customers: allAirtable(filter: { table: { eq: "Customers" } }) {
       nodes {
         data {
           name

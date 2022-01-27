@@ -15,15 +15,15 @@ const Survey = () => {
       .catch(error => console.log(error))
 
     const newItems = records.map(record => {
-      const { id, fields } = record;
-      return { id, fields };
-    });
-    setItems(newItems);
-    setLoading(false);
+      const { id, fields } = record
+      return { id, fields }
+    })
+    setItems(newItems)
+    setLoading(false)
   }
 
   const giveVote = async id => {
-    setLoading(true);
+    setLoading(true)
     const tempItems = [...items].map(item => {
       if (item.id === id) {
         let { id, fields } = item
@@ -39,11 +39,11 @@ const Survey = () => {
       .catch(error => console.log(error))
 
     const newItems = records.map(record => {
-      const { id, fields } = record;
-      return { id, fields };
-    });
-    setItems(newItems);
-    setLoading(false);
+      const { id, fields } = record
+      return { id, fields }
+    })
+    setItems(newItems)
+    setLoading(false)
   }
 
   useEffect(() => {
