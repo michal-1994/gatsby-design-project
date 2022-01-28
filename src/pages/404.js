@@ -2,9 +2,12 @@ import React from 'react'
 import { Layout } from '../components'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import Seo from '../components/SEO'
+
 const Error = () => {
   return (
     <Layout>
+      <Seo title="Not found" />
       <Wrapper>
         <div>
           <h1>oops.</h1>

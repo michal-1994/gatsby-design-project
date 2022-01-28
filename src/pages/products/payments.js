@@ -2,11 +2,14 @@ import React from 'react'
 import { Layout } from '../../components'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import Seo from '../../components/SEO'
+
 const Payments = ({ location }) => {
   const path = location.pathname.slice(1)
 
   return (
     <Layout>
+      <Seo title="Payments" />
       <Wrapper>
         <div>
           <h1>{path}</h1>

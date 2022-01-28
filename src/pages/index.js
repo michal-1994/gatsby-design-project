@@ -1,12 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Layout, Hero, About, Projects, Survey, Slider } from '../components'
+import Seo from '../components/SEO'
 
 const HomePage = ({ data }) => {
   const { allAirtable, customers, survey } = data
 
   return (
     <Layout>
+      <Seo title="Home" />
       <Hero />
       <About />
       <Projects projects={allAirtable.nodes} title="latest projects" />
