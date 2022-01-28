@@ -3,18 +3,15 @@ import { graphql } from 'gatsby'
 import { Layout, Hero, About, Projects, Survey, Slider } from '../components'
 
 const HomePage = ({ data }) => {
-  const {
-    allAirtable: { nodes: projects },
-    customers: { nodes },
-  } = data
+  const { allAirtable, customers, survey } = data
 
   return (
     <Layout>
       <Hero />
       <About />
-      <Projects projects={projects} title="latest projects" />
-      <Survey />
-      <Slider customers={nodes} />
+      <Projects projects={allAirtable.nodes} title="latest projects" />
+      <Survey survey={survey.nodes} />
+      <Slider customers={customers.nodes} />
     </Layout>
   )
 }
@@ -62,6 +59,15 @@ export const query = graphql`
           }
         }
         id
+      }
+    }
+    survey: allAirtable(filter: { table: { eq: "Survey" } }) {
+      nodes {
+        id
+        data {
+          name
+          votes
+        }
       }
     }
   }

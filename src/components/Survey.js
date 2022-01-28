@@ -1,64 +1,59 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Title from './Title'
 import styled from 'styled-components'
-import base from './Airtable'
+// import base from './Airtable'
 import { FaVoteYea } from 'react-icons/fa'
 
-const Survey = () => {
-  const [items, setItems] = useState([])
-  const [loading, setLoading] = useState(true)
+const Survey = ({ survey = [] }) => {
+  // const [items, setItems] = useState([])
+  // const [loading, setLoading] = useState(true)
 
-  const getRecords = async () => {
-    const records = await base('Survey')
-      .select({})
-      .firstPage()
-      .catch(error => console.log(error))
+  // const getRecords = async () => {
+  //   const records = await base('Survey')
+  //     .select({})
+  //     .firstPage()
+  //     .catch(error => console.log(error))
 
-    const newItems = records.map(record => {
-      const { id, fields } = record
-      return { id, fields }
-    })
-    setItems(newItems)
-    setLoading(false)
-  }
+  //   const newItems = records.map(record => {
+  //     const { id, fields } = record
+  //     return { id, fields }
+  //   })
+  //   setItems(newItems)
+  //   setLoading(false)
+  // }
 
-  const giveVote = async id => {
-    setLoading(true)
-    const tempItems = [...items].map(item => {
-      if (item.id === id) {
-        let { id, fields } = item
-        fields = { ...fields, votes: fields.votes + 1 }
-        return { id, fields }
-      } else {
-        return item
-      }
-    })
+  // const giveVote = async id => {
+  //   setLoading(true)
+  //   const tempItems = [...items].map(item => {
+  //     if (item.id === id) {
+  //       let { id, fields } = item
+  //       fields = { ...fields, votes: fields.votes + 1 }
+  //       return { id, fields }
+  //     } else {
+  //       return item
+  //     }
+  //   })
 
-    const records = await base('Survey')
-      .update(tempItems)
-      .catch(error => console.log(error))
+  //   const records = await base('Survey')
+  //     .update(tempItems)
+  //     .catch(error => console.log(error))
 
-    const newItems = records.map(record => {
-      const { id, fields } = record
-      return { id, fields }
-    })
-    setItems(newItems)
-    setLoading(false)
-  }
+  //   const newItems = records.map(record => {
+  //     const { id, fields } = record
+  //     return { id, fields }
+  //   })
+  //   setItems(newItems)
+  //   setLoading(false)
+  // }
 
-  useEffect(() => {
-    getRecords()
-  }, [])
+  // useEffect(() => {
+  //   getRecords()
+  // }, [])
 
-  let votes = loading ? (
-    <h3>loading...</h3>
-  ) : (
+  let votes = (
     <ul>
-      {items.map(item => {
-        const {
-          id,
-          fields: { name, votes },
-        } = item
+      {survey.map(item => {
+        const { id, data: { name, votes } } = item
         return (
           <li key={id}>
             <div className="key">{name.toUpperCase().substring(0, 2)}</div>
@@ -67,8 +62,8 @@ const Survey = () => {
               <p>{votes} votes</p>
             </div>
             <button
-              disabled={loading ? true : false}
-              onClick={() => giveVote(id)}
+              // disabled={loading ? true : false}
+              // onClick={() => giveVote(id)}
             >
               <FaVoteYea />
             </button>

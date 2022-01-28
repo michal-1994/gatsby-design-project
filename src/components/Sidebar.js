@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import { Link } from 'gatsby'
 import { GatsbyContext } from '../context/context'
+import links from '../constants/links'
+
 const Sidebar = () => {
-  const { links, hideSidebar } = useContext(GatsbyContext)
+  const { hideSidebar } = useContext(GatsbyContext)
 
   return (
     <Wrapper>

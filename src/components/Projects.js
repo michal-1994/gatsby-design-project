@@ -43,7 +43,7 @@ const Projects = ({ projects: data, title, page }) => {
           )
         })}
       </div>
-      <div className="section-center">
+      <div>
         {!page && (
           <Link to="/projects" className="btn">
             all projects

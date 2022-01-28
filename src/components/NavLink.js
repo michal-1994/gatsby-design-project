@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { GatsbyContext } from '../context/context'
+import links from '../constants/links'
+
 const NavLink = ({ page }) => {
-  const { links } = useContext(GatsbyContext)
 
   return (
     <Wrapper>
@@ -12,14 +12,17 @@ const NavLink = ({ page }) => {
       <div className="links">
         {links.map((link, index) => {
           const { url, label, icon } = link
+          let template;
+
           if (link.page === page) {
-            return (
+            template = (
               <Link key={index} to={url}>
                 {icon}
                 {label}
               </Link>
             )
           }
+          return template;
         })}
         <div className="caret"></div>
       </div>

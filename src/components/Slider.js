@@ -7,7 +7,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 
 const Slider = ({ customers = [] }) => {
-  const [index, setIndex] = React.useState(0)
+  const [index, setIndex] = useState(0)
 
   const nextSlide = () => {
     setIndex(oldIndex => {
@@ -27,6 +27,7 @@ const Slider = ({ customers = [] }) => {
       return index
     })
   }
+
   useEffect(() => {
     let slider = setInterval(() => {
       setIndex(oldIndex => {
@@ -40,7 +41,7 @@ const Slider = ({ customers = [] }) => {
     return () => {
       clearInterval(slider)
     }
-  }, [index])
+  }, [index, customers.length])
 
   return (
     <Wrapper className="section">
