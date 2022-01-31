@@ -14,7 +14,7 @@ const SEO = ({ title, description, image, article }) => {
     defaultDescription,
     siteUrl,
     defaultImage,
-    twitterUsername,
+    icon
   } = site.siteMetadata
 
   const seo = {
@@ -22,12 +22,14 @@ const SEO = ({ title, description, image, article }) => {
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
+    icon: `${siteUrl}${icon}`
   }
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      <link rel="icon" href={seo.icon} type="image/x-icon" />
 
       {seo.url && <meta property="og:url" content={seo.url} />}
 
@@ -38,22 +40,6 @@ const SEO = ({ title, description, image, article }) => {
       {seo.description && (
         <meta property="og:description" content={seo.description} />
       )}
-
-      {seo.image && <meta property="og:image" content={seo.image} />}
-
-      <meta name="twitter:card" content="summary_large_image" />
-
-      {twitterUsername && (
-        <meta name="twitter:creator" content={twitterUsername} />
-      )}
-
-      {seo.title && <meta name="twitter:title" content={defaultTitle} />}
-
-      {seo.description && (
-        <meta name="twitter:description" content={seo.description} />
-      )}
-
-      {seo.image && <meta name="twitter:image" content={seo.image} />}
     </Helmet>
   )
 }
@@ -82,8 +68,8 @@ const query = graphql`
         titleTemplate
         defaultDescription: description
         siteUrl: url
-        defaultImage: image
-        twitterUsername
+        defaultImage: image,
+        icon: icon
       }
     }
   }
